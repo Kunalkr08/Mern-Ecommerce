@@ -1,4 +1,4 @@
-const backendDomain = "https://mern-ecommerce-sable.vercel.app"
+const backendDomain = "https://mern-ecommerce-phi-two.vercel.app"
 const SummaryApi = {
     signUP : {
          url : `${backendDomain}/api/signup`,
