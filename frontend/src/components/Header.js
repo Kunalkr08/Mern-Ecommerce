@@ -66,7 +66,7 @@ export const Header = () => {
             <div className='flex items-center gap-7'>
                 <div className='relative flex justify-center'>
                     {
-                        user?._id && (
+                        user && (
                             <div className='text-3xl cursor-pointer relative flex justify-center' onClick={()=>setMenuDisplay(prev => !prev)}>
                             { 
                               user?.profilePic ? (
@@ -95,7 +95,7 @@ export const Header = () => {
                     }
                 </div>
                    {
-                      user?._id && (
+                      user && (
                            <Link to={"/cart"} className='text-2xl relative cursor-pointer'>
                                <span><FaShoppingCart/></span>
                                <div className='bg-blue-600 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3'>
