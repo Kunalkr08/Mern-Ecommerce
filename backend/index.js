@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors({
-    origin : process.env.FRONTEND_URL,
+    origin : true,
     credentials : true
 })); 
 app.use(bodyParser.json({ limit: '20mb' }));
