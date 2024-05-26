@@ -18,7 +18,9 @@ app.use(cookieParser())
 
 app.use("/api", router)
 
-app.use("/api", router)
+app.get("/",(req,res)=>{
+    res.send("Hello Kunal kumar");
+})
 
 const PORT = 8000 || process.env.PORT
 connectDB().then(()=>{
