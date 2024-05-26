@@ -107,7 +107,7 @@ export const Header = () => {
 
                  <div>
                     {
-                        user?._id ? (
+                        user ? (
                             <button onClick={handleLogout} className='px-2 py-1 rounded-full text-white bg-blue-600 hover:bg-blue-700 '>Logout</button>
                         )
                         : 
