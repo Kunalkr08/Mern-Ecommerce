@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors({
-    origin : 'https://mern-ecommerce-eei1.vercel.app',
+    origin : process.env.FRONTEND_URL,
     credentials : true
 })); 
 app.use(bodyParser.json({ limit: '20mb' }));
