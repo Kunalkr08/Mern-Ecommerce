@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(cors({
     origin : true,
+    methods: ["GET", "POST", "PUT", "UPDATE", "DELETE"],
     credentials : true
 })); 
 app.use(bodyParser.json({ limit: '20mb' }));
