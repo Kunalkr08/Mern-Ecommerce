@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors({
-    origin : https://mern-ecommerce-6exy.vercel.app,
+    origin : true,
     methods: ["GET", "POST", "PUT", "UPDATE", "DELETE"],
     credentials : true
 })); 
