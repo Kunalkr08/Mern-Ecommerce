@@ -4,9 +4,9 @@ import loginIcons from '../assest/signin.gif'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
-import imageTobase64 from '../helpers/imageTobase64';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
+import uploadImage from '../helpers/uploadImage';
 
 const SignUp = () => {
   const [showPassword,setShowPassword] = useState(false)
@@ -16,6 +16,7 @@ const SignUp = () => {
       password : "",
       name : "",
       confirmPassword : "",
+      profilePic : "",
   })
 
 
@@ -31,6 +32,25 @@ const SignUp = () => {
           }
       })
   }
+
+  const handleUploadPic = async(e) =>{
+    const file = e.target.files[0]
+
+    console.log(file)
+    
+    const uploadImageCloudinary = await uploadImage(file)
+    
+    console.log(uploadImageCloudinary.url)
+    setData((preve)=>{
+      return{
+        ...preve,
+        profilePic : uploadImageCloudinary.url
+      }
+    })
+
+  }
+
+
 
 
   const handleSubmit = async(e) =>{
@@ -50,13 +70,13 @@ const SignUp = () => {
 
           console.log("My name is kunal Kumar",dataApi);
 
-          if(dataApi.success){
-            toast.success(dataApi.message)
+          if(dataApi?.success){
+            toast.success(dataApi?.message)
             navigate("/login")
           }
 
-          if(dataApi.error){
-            toast.error(dataApi.message)
+          if(dataApi?.error){
+            toast.error(dataApi?.message)
           }
     
       }else{
@@ -73,13 +93,14 @@ const SignUp = () => {
 
                     <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
                         <div>
-                            <img src={loginIcons} alt='login icons'/>
+                           <img src={data.profilePic || loginIcons} alt='login icons'/>
                         </div>
                         <form>
                           <label>
                             <div className='text-xs bg-opacity-80 bg-slate-200 pb-4 pt-2 cursor-pointer text-center absolute bottom-0 w-full'>
                               Upload  Photo
                             </div>
+                            <input type='file' className='hidden' onChange={handleUploadPic}/>
                           </label>
                         </form>
                     </div>
